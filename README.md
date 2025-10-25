@@ -21,7 +21,7 @@ To create a truly accessible computing environment where anyone, regardless of p
 
 REACH is currently in active development. We're working toward our MVP release (v0.1.0).
 
-[View Development Progress](https://github.com/YOUR_USERNAME/reach/projects/1)
+[View Development Progress](https://github.com/tydukes/reach/projects/2)
 
 ## 📋 Roadmap
 
