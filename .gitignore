@@ -137,3 +137,11 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Setup and temporary scripts
+create-*.sh
+branch-protection*.json
+*.tmp
+
+# npm/yarn lock files (we'll use npm but lock file comes later)
+# package-lock.json will be tracked once we actually initialize npm
