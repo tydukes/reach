@@ -145,3 +145,6 @@ branch-protection*.json
 
 # npm/yarn lock files (we'll use npm but lock file comes later)
 # package-lock.json will be tracked once we actually initialize npm
+
+# Claude Code local settings
+.claude/

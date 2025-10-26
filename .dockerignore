@@ -1,0 +1,47 @@
+# Node modules
+node_modules
+npm-debug.log
+
+# Build outputs
+dist
+*.tsbuildinfo
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# macOS resource forks
+._*
+.AppleDouble
+.LSOverride
+
+# Test coverage
+coverage
+.nyc_output
+
+# Logs
+logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Documentation (not needed in container)
+*.md
+!README.md
