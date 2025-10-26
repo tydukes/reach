@@ -1,0 +1,44 @@
+name: Socket Security
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  push:
+    branches: [main]
+  # Allow manual trigger
+  workflow_dispatch:
+
+jobs:
+  socket-security:
+    name: Socket Supply Chain Security
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      # Required for Socket to comment on PRs
+      issues: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Run Socket Security CLI
+        uses: SocketDev/socket-security-action@v1
+        with:
+          # Socket will analyze package.json changes and dependencies
+          # Requires SOCKET_SECURITY_API_KEY secret to be set
+          # You can get a free API key at https://socket.dev
+          api-key: ${{ secrets.SOCKET_SECURITY_API_KEY }}
+          continue-on-error: true
+
+      - name: Socket CLI Report
+        if: always()
+        run: |
+          echo "Socket Security scan completed"
+          echo "Check the PR comments for detailed security analysis"
