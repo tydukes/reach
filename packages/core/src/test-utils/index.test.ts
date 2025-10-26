@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { createMockLogger, delay, createSpy } from './index';
+import { createMockLogger, delay, createSpy } from './index.js';
 
 describe('Test Utilities', () => {
   describe('createMockLogger', () => {

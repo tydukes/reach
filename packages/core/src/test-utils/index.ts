@@ -3,6 +3,8 @@
  * Shared helpers and mocks for testing
  */
 
+import { vi } from 'vitest';
+
 /**
  * Creates a mock logger for testing
  */
@@ -28,5 +30,5 @@ export function delay(ms: number): Promise<void> {
 export function createSpy<T extends (...args: any[]) => any>(
   implementation?: T
 ) {
-  return vi.fn(implementation);
+  return implementation ? vi.fn(implementation) : vi.fn();
 }
