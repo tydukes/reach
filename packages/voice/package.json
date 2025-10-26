@@ -9,6 +9,7 @@
     "build": "tsc",
     "clean": "rm -rf dist",
     "typecheck": "tsc --noEmit",
+    "lint": "eslint src --ext .ts",
     "test": "echo \"Tests not yet implemented\" && exit 0"
   },
   "keywords": ["reach", "voice", "stt", "tts"],
