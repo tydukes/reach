@@ -162,3 +162,13 @@ branch-protection*.json
 
 # macOS thumbnails
 Thumbs.db
+
+# Test coverage
+coverage/
+.nyc_output/
+*.lcov
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/

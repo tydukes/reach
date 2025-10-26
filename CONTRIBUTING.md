@@ -94,11 +94,107 @@ If you prefer to develop locally without Docker:
 
 ## 🧪 Testing
 
+REACH uses **Vitest** for unit and integration tests, and **Playwright** for end-to-end (E2E) tests.
+
+### Running Tests
+
 ```bash
-npm test              # Run all tests
-npm run test:watch    # Watch mode
-npm run test:coverage # Coverage report
+# Unit & Integration Tests (Vitest)
+npm test                 # Run all tests once
+npm run test:watch       # Watch mode (re-runs on file changes)
+npm run test:ui          # Interactive UI for debugging tests
+npm run test:coverage    # Generate coverage report
+
+# E2E Tests (Playwright)
+npm run test:e2e         # Run E2E tests headless
+npm run test:e2e:ui      # Run E2E tests with Playwright UI
+npm run test:e2e:headed  # Run E2E tests with visible browser
 ```
+
+### Writing Tests
+
+#### Unit Tests
+
+- Place test files next to the code they test: `src/module.ts` → `src/module.test.ts`
+- Use descriptive test names that explain what is being tested
+- Follow the Arrange-Act-Assert pattern
+- Use test utilities from `@reach/core/test-utils`
+
+Example:
+
+```typescript
+import { describe, it, expect } from 'vitest';
+import { myFunction } from './module';
+
+describe('myFunction', () => {
+  it('should return expected value when given valid input', () => {
+    // Arrange
+    const input = 'test';
+
+    // Act
+    const result = myFunction(input);
+
+    // Assert
+    expect(result).toBe('expected');
+  });
+});
+```
+
+#### E2E Tests
+
+- Place E2E tests in the `e2e/` directory at the project root
+- Test complete user workflows, not individual functions
+- Use Playwright's accessibility testing features
+- Test with multiple browsers (Chromium, Firefox, WebKit)
+
+Example:
+
+```typescript
+import { test, expect } from '@playwright/test';
+
+test('user can complete voice command workflow', async ({ page }) => {
+  await page.goto('/');
+  await page.click('[aria-label="Start voice input"]');
+  // ... test workflow
+});
+```
+
+### Coverage Requirements
+
+- **Minimum coverage**: 80% for lines, functions, branches, and statements
+- Coverage reports are generated in `coverage/` directory
+- CI will fail if coverage drops below thresholds
+- Focus on testing critical paths and edge cases
+
+### Test Utilities
+
+The `@reach/core/test-utils` package provides shared testing helpers:
+
+```typescript
+import { createMockLogger, delay, createSpy } from '@reach/core/test-utils';
+
+// Mock logger for testing
+const logger = createMockLogger();
+logger.info('test');
+expect(logger.info).toHaveBeenCalledWith('test');
+
+// Delay for async tests
+await delay(100);
+
+// Create function spies
+const spy = createSpy((a, b) => a + b);
+const result = spy(2, 3);
+expect(result).toBe(5);
+```
+
+### Accessibility Testing
+
+All tests should consider accessibility:
+
+- Use semantic HTML selectors (`[role="button"]`, `[aria-label="..."]`)
+- Test keyboard navigation in E2E tests
+- Verify ARIA attributes are present and correct
+- Test with screen reader announcement expectations
 
 ## 📝 Commit Messages
 

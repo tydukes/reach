@@ -9,7 +9,13 @@
   "scripts": {
     "build": "npm run build -w @reach/core && npm run build -w @reach/cli -w @reach/electron -w @reach/voice -w @reach/memory -w @reach/mcp-client",
     "build:core": "npm run build -w @reach/core",
-    "test": "npm run test --workspaces --if-present",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
     "lint": "npm run lint --workspaces --if-present",
     "lint:root": "eslint . --ext .ts,.tsx",
     "format": "prettier --write \"**/*.{ts,tsx,json,md}\"",
@@ -18,12 +24,16 @@
     "typecheck": "npm run typecheck --workspaces --if-present"
   },
   "devDependencies": {
+    "@playwright/test": "^1.41.0",
     "@types/node": "^20.19.23",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
+    "@vitest/coverage-v8": "^1.2.0",
+    "@vitest/ui": "^1.2.0",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^1.2.0"
   },
   "engines": {
     "node": ">=20.0.0",
