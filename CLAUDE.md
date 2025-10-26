@@ -61,6 +61,23 @@ reach/
 
 ## Development Workflow
 
+### Development Environment
+
+**All development should be done in the VSCode dev container.** The container provides a consistent, reproducible environment with all dependencies pre-installed.
+
+To start developing:
+1. Open the project in VSCode
+2. Click "Reopen in Container" when prompted
+3. Wait for the container to build (first time takes 5-10 minutes)
+4. All commands below should be run inside the container
+
+**What's in the container:**
+- Node.js 20.19.2 with npm 11.6.2
+- Python 3.11.2 for future ML tools
+- FFmpeg 5.1.7 with full audio library support (ALSA, PortAudio, libsndfile)
+- Pre-configured VSCode extensions (ESLint, Prettier, TypeScript, GitLens)
+- Git, Zsh with Oh My Zsh
+
 ### Build Commands
 
 ```bash
@@ -196,10 +213,20 @@ All packages use similar TypeScript configurations:
 
 ## Notes for AI Assistants
 
+### Context Awareness
+
+- All development happens in a VSCode dev container with pre-configured tools
+- The container has Node.js 20+, Python 3.11+, and audio processing libraries
+- VSCode extensions (ESLint, Prettier, TypeScript) are pre-installed
+- Commands should be run inside the container environment
+
+### Code Suggestions
+
 - Always consider accessibility in your suggestions
 - Reference the monorepo structure when proposing changes
 - Respect the privacy-first architecture
 - Follow conventional commit standards
-- Test commands in the dev container environment
-- Consider the build order when modifying packages
+- Consider the build order when modifying packages (core must build first)
 - Think about users with disabilities in every decision
+- Suggest tests alongside implementation
+- Reference file paths with line numbers (e.g., `file.ts:123`) for easy navigation

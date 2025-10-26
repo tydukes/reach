@@ -109,6 +109,36 @@ Follow conventional commits:
 - `docs: update installation guide`
 - `test: add tests for guardrails`
 
+## 🤖 AI-Assisted Development
+
+**AI-assisted development is encouraged and embraced** on this project, especially given our accessibility focus. AI tools can help make development more accessible and productive.
+
+### Best Practices
+
+- **Always review AI-generated code**: Understand what the code does before committing
+- **Test thoroughly**: Run tests and verify functionality works as expected
+- **Check for accessibility**: Ensure AI suggestions maintain accessibility standards
+- **Verify security**: Review for potential security issues or exposed credentials
+- **Maintain code quality**: Ensure generated code follows project conventions and standards
+- **Ask questions**: If you don't understand AI-generated code, ask for clarification or refactor it
+
+### Using AI Tools
+
+- **Claude Code, GitHub Copilot, Cursor**: All are great tools for this project
+- **Context**: Share relevant files and project documentation with AI assistants
+- **Iterative**: Work iteratively, reviewing and testing at each step
+- **Human oversight**: You are responsible for all code committed, regardless of who/what wrote it
+
+### Why We Encourage AI
+
+- Makes coding more accessible to developers with disabilities
+- Speeds up development while maintaining quality
+- Helps with documentation and test generation
+- Assists with accessibility best practices
+- Reduces cognitive load for complex tasks
+
+**Remember**: AI is a powerful tool, but human judgment, creativity, and oversight are irreplaceable.
+
 ## ♿ Accessibility First
 
 When contributing UI changes:
