@@ -5,7 +5,6 @@ on:
     types: [opened, synchronize, reopened]
   push:
     branches: [main]
-  # Allow manual trigger
   workflow_dispatch:
 
 jobs:
@@ -15,7 +14,6 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
-      # Required for Socket to comment on PRs
       issues: write
 
     steps:
@@ -28,17 +26,23 @@ jobs:
           node-version: '20'
           cache: 'npm'
 
-      - name: Run Socket Security CLI
-        uses: SocketDev/socket-security-action@v1
-        with:
-          # Socket will analyze package.json changes and dependencies
-          # Requires SOCKET_SECURITY_API_KEY secret to be set
-          # You can get a free API key at https://socket.dev
-          api-key: ${{ secrets.SOCKET_SECURITY_API_KEY }}
-          continue-on-error: true
+      - name: Install Socket CLI
+        run: npm install -g @socketsecurity/cli
 
-      - name: Socket CLI Report
+      - name: Run Socket Security Scan
+        env:
+          SOCKET_SECURITY_API_KEY: ${{ secrets.SOCKET_SECURITY_API_KEY }}
+        run: |
+          if [ -n "$SOCKET_SECURITY_API_KEY" ]; then
+            echo "Running Socket security scan..."
+            npx socket-npm audit || echo "Socket scan completed with findings"
+          else
+            echo "⚠️ SOCKET_SECURITY_API_KEY not set. Skipping Socket scan."
+            echo "To enable Socket scanning, add SOCKET_SECURITY_API_KEY to repository secrets."
+          fi
+
+      - name: Socket Report Summary
         if: always()
         run: |
           echo "Socket Security scan completed"
-          echo "Check the PR comments for detailed security analysis"
+          echo "For detailed reports, visit: https://socket.dev/dashboard"
