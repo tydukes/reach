@@ -1,0 +1,60 @@
+name: CodeQL Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly on Mondays at 10:00 UTC
+    - cron: '0 10 * * 1'
+
+jobs:
+  analyze:
+    name: Analyze Code
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    permissions:
+      # Required for CodeQL to write results
+      security-events: write
+      # Required to fetch internal or private CodeQL packs
+      packages: read
+      # Required for private repositories
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: false
+      matrix:
+        # CodeQL supports JavaScript/TypeScript, Python, and more
+        # We're focusing on JavaScript/TypeScript for now
+        language: ['javascript-typescript']
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+          # Queries to run: 'security-extended' includes more security checks
+          queries: security-extended
+          # Build mode: none for interpreted languages like JavaScript
+          config: |
+            paths-ignore:
+              - node_modules
+              - dist
+              - coverage
+              - '**/*.test.ts'
+              - '**/*.test.js'
+              - e2e
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"
+          upload: true

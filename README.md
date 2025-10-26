@@ -2,6 +2,9 @@
 
 **R**esponsive **E**mpowering **A**ccessible **C**omputing **H**elper
 
+[![CodeQL](https://github.com/tydukes/reach/actions/workflows/codeql.yml/badge.svg)](https://github.com/tydukes/reach/actions/workflows/codeql.yml)
+[![CI](https://github.com/tydukes/reach/actions/workflows/ci.yml/badge.svg)](https://github.com/tydukes/reach/actions/workflows/ci.yml)
+
 An AI-powered accessibility framework that empowers users with disabilities to interact with their computers through natural conversation. Voice-first, privacy-focused, and autonomous.
 
 ## 🎯 Mission
@@ -22,6 +25,17 @@ To create a truly accessible computing environment where anyone, regardless of p
 REACH is currently in active development. We're working toward our MVP release (v0.1.0).
 
 [View Development Progress](https://github.com/tydukes/reach/projects/2)
+
+## 🔒 Security
+
+Security is a top priority for REACH. We employ multiple layers of automated security scanning:
+
+- **CodeQL**: Semantic code analysis on every commit
+- **Dependabot**: Automated dependency updates
+- **npm audit**: Vulnerability scanning in CI
+- **Socket.dev/Snyk**: Supply chain security monitoring
+
+See [SECURITY.md](SECURITY.md) for our security policy and vulnerability reporting process.
 
 ## 📋 Roadmap
 

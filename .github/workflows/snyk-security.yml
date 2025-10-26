@@ -1,0 +1,63 @@
+name: Snyk Security Scan
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly on Mondays at 11:00 UTC
+    - cron: '0 11 * * 1'
+
+jobs:
+  snyk-security:
+    name: Snyk Vulnerability Scan
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+      actions: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Snyk Security Scan
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          # Requires SNYK_TOKEN secret to be set
+          # You can get a free token at https://snyk.io
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          # Scan for vulnerabilities and output SARIF
+          command: test
+          # Report results to GitHub Security tab
+          args: --severity-threshold=medium --all-projects --sarif-file-output=snyk.sarif
+
+      - name: Upload Snyk results to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        # Only upload if SARIF file was generated
+        if: always() && hashFiles('snyk.sarif') != ''
+        continue-on-error: true
+        with:
+          sarif_file: snyk.sarif
+
+      - name: Snyk Monitor
+        uses: snyk/actions/node@master
+        continue-on-error: true
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          # Monitor project for ongoing vulnerability tracking
+          command: monitor
+          args: --all-projects
