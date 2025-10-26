@@ -72,7 +72,7 @@ To start developing:
 4. All commands below should be run inside the container
 
 **What's in the container:**
-- Node.js 20.19.2 with npm 11.6.2
+- Node.js 24.10.0 with npm 11.6.2
 - Python 3.11.2 for future ML tools
 - FFmpeg 5.1.7 with full audio library support (ALSA, PortAudio, libsndfile)
 - Pre-configured VSCode extensions (ESLint, Prettier, TypeScript, GitLens)
@@ -216,7 +216,7 @@ All packages use similar TypeScript configurations:
 ### Context Awareness
 
 - All development happens in a VSCode dev container with pre-configured tools
-- The container has Node.js 20+, Python 3.11+, and audio processing libraries
+- The container has Node.js 24+, Python 3.11+, and audio processing libraries
 - VSCode extensions (ESLint, Prettier, TypeScript) are pre-installed
 - Commands should be run inside the container environment
 

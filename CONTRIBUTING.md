@@ -48,7 +48,7 @@ The easiest way to get started is using the VSCode dev container, which provides
 3. **Verify Setup**:
 
    ```bash
-   node --version    # Should be 20.x or higher
+   node --version    # Should be 24.x or higher
    npm --version     # Should be 10.x or higher
    python3 --version # Should be 3.11.x or higher
    npm test          # Run tests
@@ -56,7 +56,7 @@ The easiest way to get started is using the VSCode dev container, which provides
 
 **What's Included in the Dev Container:**
 
-- Node.js 20+ with npm
+- Node.js 24+ with npm
 - Python 3.11+ for future ML tools
 - Audio libraries (ALSA, PortAudio, FFmpeg) for voice processing
 - Git, Zsh with Oh My Zsh
@@ -68,7 +68,7 @@ The easiest way to get started is using the VSCode dev container, which provides
 If you prefer to develop locally without Docker:
 
 1. **Install Prerequisites**:
-   - Node.js 20+ from [nodejs.org](https://nodejs.org/)
+   - Node.js 24+ from [nodejs.org](https://nodejs.org/)
    - Python 3.11+ from [python.org](https://python.org/)
    - Audio libraries for your OS:
      - **Linux**: `sudo apt-get install libasound2-dev libportaudio2 portaudio19-dev libsndfile1-dev ffmpeg`
