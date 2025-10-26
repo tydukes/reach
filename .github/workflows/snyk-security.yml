@@ -39,14 +39,16 @@ jobs:
           # You can get a free token at https://snyk.io
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
-          # Scan for vulnerabilities
+          # Scan for vulnerabilities and output SARIF
           command: test
           # Report results to GitHub Security tab
-          args: --severity-threshold=medium --all-projects
+          args: --severity-threshold=medium --all-projects --sarif-file-output=snyk.sarif
 
       - name: Upload Snyk results to GitHub Code Scanning
         uses: github/codeql-action/upload-sarif@v3
-        if: always()
+        # Only upload if SARIF file was generated
+        if: always() && hashFiles('snyk.sarif') != ''
+        continue-on-error: true
         with:
           sarif_file: snyk.sarif
 
