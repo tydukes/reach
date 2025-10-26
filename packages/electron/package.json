@@ -1,0 +1,23 @@
+{
+  "name": "@reach/electron",
+  "version": "0.1.0",
+  "description": "REACH Electron desktop application",
+  "type": "module",
+  "main": "./dist/main.js",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"Tests not yet implemented\" && exit 0"
+  },
+  "keywords": ["reach", "electron", "desktop"],
+  "author": "Tyler Dukes",
+  "license": "MIT",
+  "dependencies": {
+    "@reach/core": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3"
+  }
+}

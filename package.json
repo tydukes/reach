@@ -1,0 +1,25 @@
+{
+  "name": "@reach/monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "REACH - Responsive Empowering Accessible Computing Helper",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @reach/core && npm run build -w @reach/cli -w @reach/electron -w @reach/voice -w @reach/memory -w @reach/mcp-client",
+    "build:core": "npm run build -w @reach/core",
+    "test": "npm run test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present && rm -rf node_modules",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.23",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
+}

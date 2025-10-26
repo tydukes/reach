@@ -1,0 +1,24 @@
+{
+  "name": "@reach/mcp-client",
+  "version": "0.1.0",
+  "description": "REACH Model Context Protocol client",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"Tests not yet implemented\" && exit 0"
+  },
+  "keywords": ["reach", "mcp", "ai"],
+  "author": "Tyler Dukes",
+  "license": "MIT",
+  "dependencies": {
+    "@reach/core": "*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@reach/core",
+  "version": "0.1.0",
+  "description": "REACH core library with interfaces and base classes",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "typecheck": "tsc --noEmit",
+    "test": "echo \"Tests not yet implemented\" && exit 0"
+  },
+  "keywords": ["reach", "accessibility", "ai", "voice"],
+  "author": "Tyler Dukes",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.3"
+  }
+}
