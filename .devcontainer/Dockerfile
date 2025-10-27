@@ -1,7 +1,7 @@
 # REACH Development Container
 # Provides Node.js 24+, Python 3.11+, and audio libraries for voice processing
 
-FROM mcr.microsoft.com/devcontainers/javascript-node:1-24-bookworm
+FROM mcr.microsoft.com/devcontainers/javascript-node:24-bookworm
 
 # Install Python 3.11+ and pip
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
