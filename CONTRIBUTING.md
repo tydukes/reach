@@ -196,6 +196,40 @@ All tests should consider accessibility:
 - Verify ARIA attributes are present and correct
 - Test with screen reader announcement expectations
 
+## 🔍 Linting and Code Quality
+
+REACH uses **ESLint 9** with TypeScript support to maintain code quality and consistency.
+
+### Running the Linter
+
+```bash
+npm run lint              # Lint all packages
+npm run lint -w @reach/core  # Lint specific package
+```
+
+### Configuration
+
+- **ESLint 9 Flat Config**: Uses `eslint.config.mjs` instead of `.eslintrc.json`
+- **TypeScript ESLint v8**: Type-aware linting with TypeScript support
+- **Strict Rules**: Enforces best practices and catches common errors
+
+### Common Lint Rules
+
+- **No Unused Variables**: Variables with `_` prefix are allowed (e.g., `_unusedArg`)
+- **Console Statements**: Only `console.warn()` and `console.error()` are allowed
+- **Explicit Any**: Using `any` type triggers a warning (prefer specific types)
+- **Function Return Types**: Inferred return types are allowed (no need for explicit types)
+
+### Fixing Lint Issues
+
+Most formatting issues can be auto-fixed:
+
+```bash
+npm run lint -- --fix     # Auto-fix issues across all packages
+```
+
+Before committing, always run the linter to catch any issues early.
+
 ## 📝 Commit Messages
 
 Follow conventional commits:

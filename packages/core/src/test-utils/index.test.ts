@@ -56,7 +56,7 @@ describe('Test Utilities', () => {
     it('should use custom implementation', () => {
       const spy = createSpy((a: number, b: number) => a + b);
 
-      const result = spy(2, 3);
+      const result = spy(2, 3) as number;
 
       expect(result).toBe(5);
       expect(spy).toHaveBeenCalledWith(2, 3);
