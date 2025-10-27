@@ -71,7 +71,7 @@
       "installZsh": true,
       "installOhMyZsh": true,
       "upgradePackages": true,
-      "username": "vscode",
+      "username": "node",
       "userUid": "1000",
       "userGid": "1000"
     },
@@ -82,12 +82,12 @@
   },
 
   // Set container user
-  "remoteUser": "vscode",
+  "remoteUser": "node",
 
   // Configure mounts
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
-    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,readonly,type=bind"
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,readonly,type=bind"
   ],
 
   // Environment variables
