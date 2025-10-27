@@ -26,6 +26,9 @@
         "ms-azuretools.vscode-docker",
 
         // Accessibility
+        // Note: vscode-axe-linter may not work on ARM64 (Apple Silicon) due to x86-64 dependencies
+        // If you see Rosetta errors, disable this extension in the container
+        // Alternative: Use browser-based axe DevTools or pa11y-ci for accessibility testing
         "deque-systems.vscode-axe-linter",
 
         // General utilities
@@ -78,7 +81,8 @@
     "ghcr.io/devcontainers/features/git:1": {
       "version": "latest",
       "ppa": true
-    }
+    },
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
   },
 
   // Set container user
