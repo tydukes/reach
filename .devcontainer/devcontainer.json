@@ -26,6 +26,9 @@
         "ms-azuretools.vscode-docker",
 
         // Accessibility
+        // Note: vscode-axe-linter may not work on ARM64 (Apple Silicon) due to x86-64 dependencies
+        // If you see Rosetta errors, disable this extension in the container
+        // Alternative: Use browser-based axe DevTools or pa11y-ci for accessibility testing
         "deque-systems.vscode-axe-linter",
 
         // General utilities
@@ -71,23 +74,24 @@
       "installZsh": true,
       "installOhMyZsh": true,
       "upgradePackages": true,
-      "username": "vscode",
+      "username": "node",
       "userUid": "1000",
       "userGid": "1000"
     },
     "ghcr.io/devcontainers/features/git:1": {
       "version": "latest",
       "ppa": true
-    }
+    },
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1": {}
   },
 
   // Set container user
-  "remoteUser": "vscode",
+  "remoteUser": "node",
 
   // Configure mounts
   "mounts": [
     "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind",
-    "source=${localEnv:HOME}/.ssh,target=/home/vscode/.ssh,readonly,type=bind"
+    "source=${localEnv:HOME}/.ssh,target=/home/node/.ssh,readonly,type=bind"
   ],
 
   // Environment variables
