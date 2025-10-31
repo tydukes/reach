@@ -77,6 +77,7 @@ nav:
       - MCP Client: packages/mcp-client.md
   - Contributing:
       - Contributing Guide: contributing/contributing.md
+      - Code Style Guide: contributing/code-style.md
       - Code of Conduct: contributing/code-of-conduct.md
       - Security Policy: contributing/security.md
   - Changelog: changelog.md

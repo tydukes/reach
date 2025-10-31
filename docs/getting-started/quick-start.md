@@ -65,6 +65,20 @@ Run TypeScript type checking:
 npm run typecheck
 ```
 
+## Code Style Validation
+
+REACH follows [The Dukes Engineering Style Guide](https://tydukes.github.io/coding-style-guide/). Validate your code:
+
+```bash
+# Install UV if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Run style guide validation
+uv run python scripts/validate_style_guide.py
+```
+
+This checks for required metadata tags and proper code structure.
+
 ## Development Workflow
 
 1. **Create a feature branch:**
