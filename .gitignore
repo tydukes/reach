@@ -186,3 +186,4 @@ site/
 
 # UV lock file
 uv.lock
+._*
