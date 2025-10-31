@@ -149,8 +149,8 @@ const testLogger = createTestLogger(LogLevel.ERROR);
 
 ## Documentation
 
-- [Logging & Telemetry Guide](../../packages/core/src/logging/README.md) - Complete logging documentation
-- [API Reference](../../packages/core/src/index.ts) - TypeScript definitions
+- [Logging & Telemetry Guide](https://github.com/tydukes/reach/blob/main/packages/core/src/logging/README.md) - Complete logging documentation
+- [API Reference](https://github.com/tydukes/reach/blob/main/packages/core/src/index.ts) - TypeScript definitions
 
 ## Examples
 
