@@ -275,3 +275,11 @@ export interface IGuardrails {
    */
   recordConfirmation(operationId: string, confirmed: boolean): Promise<void>;
 }
+
+/**
+ * Logging and Telemetry
+ *
+ * Structured logging with OpenTelemetry integration, automatic PII redaction,
+ * trace context propagation, and metrics collection.
+ */
+export * from './logging/index.js';

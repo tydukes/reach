@@ -6,17 +6,38 @@
  */
 
 import { vi } from 'vitest';
+import { Logger, LogLevel } from '../logging/logger.js';
 
 /**
  * Creates a mock logger for testing
  */
 export function createMockLogger() {
   return {
+    trace: vi.fn(),
+    debug: vi.fn(),
     info: vi.fn(),
     warn: vi.fn(),
     error: vi.fn(),
-    debug: vi.fn(),
+    fatal: vi.fn(),
+    child: vi.fn(() => createMockLogger()),
+    time: vi.fn(
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-explicit-any
+      async (_operation: string, fn: () => Promise<any>) => fn()
+    ),
+    flush: vi.fn(async () => {}),
   };
+}
+
+/**
+ * Creates a test logger with configurable behavior
+ */
+export function createTestLogger(level: LogLevel = LogLevel.ERROR) {
+  return new Logger({
+    level,
+    prettyPrint: false,
+    redactPII: false,
+    component: 'test',
+  });
 }
 
 /**
@@ -29,6 +50,7 @@ export function delay(ms: number): Promise<void> {
 /**
  * Creates a spy for testing function calls
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function createSpy<T extends (...args: any[]) => any>(
   implementation?: T
 ) {
