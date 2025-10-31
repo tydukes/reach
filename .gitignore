@@ -175,3 +175,14 @@ coverage/
 
 # Snyk Security Extension - AI Rules (auto-generated)
 .github/instructions/snyk_rules.instructions.md
+
+# Python virtual environment (UV)
+.venv/
+*.pyc
+__pycache__/
+
+# MkDocs build output
+site/
+
+# UV lock file
+uv.lock

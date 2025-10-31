@@ -1,6 +1,8 @@
+// @module: @reach/electron
+
 /**
  * REACH Electron Main Process
- * 
+ *
  * Desktop application entry point.
  */
 

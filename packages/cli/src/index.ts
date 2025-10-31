@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 
+// @module: @reach/cli
+
 /**
  * REACH CLI
- * 
+ *
  * Command-line interface for REACH.
  */
 
