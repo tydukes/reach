@@ -1,3 +1,5 @@
+// @module: @reach/core
+
 /**
  * REACH Core Library
  *

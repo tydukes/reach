@@ -1,3 +1,5 @@
+// @module: @reach/core
+
 /**
  * Test utilities for REACH packages
  * Shared helpers and mocks for testing
