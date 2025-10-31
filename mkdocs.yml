@@ -1,0 +1,82 @@
+site_name: "REACH Documentation"
+site_description: "Responsive Empowering Accessible Computing Helper - AI-powered accessibility framework for natural voice-first computing"
+site_author: "Tyler Dukes"
+site_url: "https://tydukes.github.io/reach/"
+repo_url: "https://github.com/tydukes/reach"
+repo_name: "reach"
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - content.code.annotate
+    - content.code.copy
+    - search.highlight
+    - search.share
+    - search.suggest
+  palette:
+    # Light mode
+    - scheme: default
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: blue
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/tydukes/reach
+    - icon: fontawesome/brands/github
+      link: https://github.com/tydukes
+  generator: false
+
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - tables
+  - attr_list
+  - md_in_html
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.tabbed:
+      alternate_style: true
+  - toc:
+      permalink: true
+
+nav:
+  - Home: index.md
+  - Getting Started:
+      - Installation: getting-started/installation.md
+      - Quick Start: getting-started/quick-start.md
+  - Architecture:
+      - Overview: architecture/overview.md
+      - Design Principles: architecture/design-principles.md
+  - Packages:
+      - Core: packages/core.md
+      - CLI: packages/cli.md
+      - Electron: packages/electron.md
+      - Voice: packages/voice.md
+      - Memory: packages/memory.md
+      - MCP Client: packages/mcp-client.md
+  - Contributing:
+      - Contributing Guide: contributing/contributing.md
+      - Code of Conduct: contributing/code-of-conduct.md
+      - Security Policy: contributing/security.md
+  - Changelog: changelog.md

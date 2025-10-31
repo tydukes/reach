@@ -1,0 +1,29 @@
+[project]
+name = "reach"
+version = "0.1.0"
+description = "Responsive Empowering Accessible Computing Helper - AI-powered accessibility framework"
+requires-python = ">=3.11"
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Tyler Dukes", email = "tylerdukes@users.noreply.github.com" }]
+
+dependencies = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material>=9.6.22",
+    "pre-commit>=4.3.0",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.9.0",
+    "flake8>=7.3.0",
+    "pytest>=8.4.2",
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py311']
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = ["E203", "W503"]

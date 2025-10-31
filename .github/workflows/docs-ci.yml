@@ -1,0 +1,65 @@
+name: Documentation CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'pyproject.toml'
+      - '.github/workflows/docs-ci.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'mkdocs.yml'
+      - 'pyproject.toml'
+      - '.github/workflows/docs-ci.yml'
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+
+      - name: Install UV
+        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+      - name: Add UV to PATH
+        run: echo "$HOME/.local/bin" >> $GITHUB_PATH
+
+      - name: Cache UV dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/uv
+            .venv
+          key: ${{ runner.os }}-uv-docs-${{ hashFiles('pyproject.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-uv-docs-
+
+      - name: Sync environment
+        run: uv sync
+
+      - name: Validate documentation metadata
+        run: uv run python scripts/validate_metadata.py
+        continue-on-error: true
+
+      - name: Lint markdown files
+        run: |
+          # Install markdownlint-cli if needed
+          npm install -g markdownlint-cli
+          markdownlint 'docs/**/*.md' --config .markdownlint.json
+        continue-on-error: true
+
+      - name: Build documentation
+        run: uv run mkdocs build --strict
+
+      - name: Upload docs artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: documentation
+          path: site/
+          retention-days: 7
